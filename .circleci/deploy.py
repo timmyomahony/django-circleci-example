@@ -44,9 +44,9 @@ def venv(cmd):
 
 @task
 def restart():
-    sudo('sudo supervisorctl reread')
-    sudo('sudo supervisorctl update')
-    sudo('sudo supervisorctl restart django-circleci-example')
+    sudo('supervisorctl reread')
+    sudo('supervisorctl update')
+    sudo('supervisorctl restart django-circleci-example')
 
 
 @task
