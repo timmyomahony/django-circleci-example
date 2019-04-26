@@ -5,7 +5,7 @@ jobs:
       - image: circleci/python:3.7.3
       - image: circleci/postgres:10.5
     environment:
-      DATABASE_URL: postgres://root:@localhost/circle_test
+      DATABASE_URL: postgres://postgres:@localhost/circle_test
       DJANGO_SECRET_KEY: test
       DJANGO_READ_DOT_ENV_FILE: True
       DJANGO_SETTINGS_MODULE: config.settings.test
