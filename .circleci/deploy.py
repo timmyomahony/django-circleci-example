@@ -48,14 +48,14 @@ def venv(cmd):
 def restart():
     sudo('sudo supervisorctl reread')
     sudo('sudo supervisorctl update')
-    sudo('sudo supervisorctl restart ci-api ')
+    sudo('sudo supervisorctl restart django-circleci-example')
 
 
 @task
 def update():
     with cd(env.path):
         run('git pull origin {0}'.format(env.branch))
-        venv('pip install -r src/requirements.txt')
+        venv('pip install -r requirements/production.txt')
         venv('django-admin migrate')
         venv('django-admin collectstatic --noinput')
 
