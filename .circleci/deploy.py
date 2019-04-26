@@ -16,7 +16,7 @@ if debug:
     paramiko.common.logging.basicConfig(level=paramiko.common.DEBUG)
 
 env.venv_name = 'django-circleci-example'
-env.venvs_path = '~/django-circleci-example'
+env.path = '~/django-circleci-example'
 env.user = 'admin'
 env.gateway = 'timmyomahony.com:30000'
 
@@ -26,7 +26,6 @@ def production():
     env.type = 'production'
     env.branch = 'master'
     env.settings_path = 'config.settings.production'
-    env.path = '{0}{1}/{1}/'.format(env.venvs_path, env.venv_name)
     env.hosts = ['timmyomahony.com:30000', ]
 
 
@@ -35,7 +34,6 @@ def staging():
     env.type = 'staging'
     env.branch = 'develop'
     env.settings_path = 'config.settings.production'
-    env.path = '{0}{1}/{1}/'.format(env.venvs_path, env.venv_name)
     env.hosts = ['timmyomahony.com:30000', ]
 
 
