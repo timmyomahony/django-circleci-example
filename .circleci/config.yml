@@ -21,7 +21,7 @@ jobs:
             . venv/bin/activate
             pip install -r requirements/test.txt
       - save_cache:
-          key: v001-app-{{ .Branch }}-{{ checksum "requirements/test.txt" }}
+          key: v001-app-{{ .Branch }}-{{ checksum "requirements/local.txt" }}
           paths:
             - 'venv'
       - run:
