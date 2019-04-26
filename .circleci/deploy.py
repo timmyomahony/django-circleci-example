@@ -54,8 +54,8 @@ def update():
     with cd(env.path):
         run('git pull origin {0}'.format(env.branch))
         venv('pip install -r requirements/production.txt')
-        venv('django-admin migrate')
-        venv('django-admin collectstatic --noinput')
+        venv('python manage.py migrate')
+        venv('python manage.py collectstatic --noinput')
 
 
 @task
