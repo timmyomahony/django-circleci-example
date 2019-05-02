@@ -23,17 +23,13 @@ env.gateway = 'timmyomahony.com:30000'
 
 @task
 def production():
-    env.type = 'production'
     env.branch = 'master'
-    env.settings_path = 'config.settings.production'
     env.hosts = ['timmyomahony.com:30000', ]
 
 
 @task
 def staging():
-    env.type = 'staging'
     env.branch = 'develop'
-    env.settings_path = 'config.settings.production'
     env.hosts = ['timmyomahony.com:30000', ]
 
 
@@ -43,22 +39,12 @@ def venv(cmd):
 
 
 @task
-def restart():
-    run('supervisorctl reread')
-    run('supervisorctl update')
-    run('supervisorctl restart django-circleci-example')
-
-
-@task
-def update():
+def deploy():
     with cd(env.path):
         run('git pull origin {0}'.format(env.branch))
         venv('pip install -r requirements/production.txt')
         venv('python manage.py migrate')
         venv('python manage.py collectstatic --noinput')
-
-
-@task
-def deploy():
-    update()
-    restart()
+        run('supervisorctl reread')
+        run('supervisorctl update')
+        run('supervisorctl restart django-circleci-example')
