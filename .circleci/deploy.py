@@ -1,6 +1,6 @@
 #!/usr/bin/python2
 
-from fabric.api import env, run, cd, task, sudo
+from fabric.api import env, run, cd, task
 
 debug = False
 
